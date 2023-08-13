@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+
+    .box-charge{
+      box-shadow: -18px 18px 30px;
+      border-radius: 10px;
+      display: flex;
+      
+      background-color: rgb(143, 143, 143);
+      width: 50%;
+      height: 600px;
+      align-items: center;
+      justify-content: center;
+      transition: all .5s;
+    }
+    .box-x{
+      box-shadow: 18px 18px 30px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      left: 385px;
+      top: -600px;
+      width: 50%;
+      height: 600px;
+      background-color: rgb(143, 143, 143);
+      transition: all 0.2s ease-out;
+    }
+    .box-charge:hover{
+      box-shadow: 0 0 0;
+      background-color: rgb(209, 209, 209);
+    }
+    .conf{
+      
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    
+    .box-x:hover{
+      box-shadow: 0 0 0;
+      background-color: rgb(209, 209, 209);
+    }
+    #charge{
+      
+      font-size: 72px;
+    }
+    #food{
+      font-size: 60px;
+    }
+    .move{
+      position: relative;
+      top: -550px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box-charge">
+      <h1 id="charge"></h1>
+    </div>
+    <div class="conf">
+      <div class="box-x">
+        <h1 id="food"></h1>
+      </div>
+    </div>
+
+</body>
+<script>
+var continueRandom = true;
+var continueLoop = true;
+var randomNumberTimeout;
+ 
+
+function generateRandomNumber() {
+  if (!continueRandom) {
+    return;
+  }
+
+  var randomNumber = Math.floor(Math.random() * 200) + 1;
+  var strnum = randomNumber.toString();
+  document.getElementById('charge').innerHTML = strnum;
+
+  randomNumberTimeout = setTimeout(generateRandomNumber, 100);
+}
+
+function generateRandomList() {
+  if (!continueLoop) {
+    return;
+  }
+
+  var myList = ['橙色的食物', '蓝色的食物', '冰的食物', '热的食物', '饮品类食物', '酸食物', '甜食物', '超过10元的食物'
+  , '不超过7元的食物', '大餐', '带刺的食物', '惊喜：任意食物', '无糖少油的食物', '火锅里面的食物', '奶茶店里的食物'
+  , '海底捞', '随机一家店只吃里面的食物', '红色的食物' , '西北风' , '糖类', '学校对面的小卖铺里的食物' , '自己做的食物', '便宜的廉价食品'
+  , '面包' , '牛奶' , '只能吃早餐店里的食物' , '自助餐', '肉类' , '素食' , '任意一个动物' , '任意3种食物' , '网红食物'
+  , '动物会吃的食物' , '奇怪的' , '贵而少的',   "披萨",
+  "汉堡",
+  "炸鸡",
+  "牛排",
+  "寿司",
+  "意大利面",
+  "墨西哥煎玉米饼",
+  "烤鸭",
+  "烤肉",
+  "火锅",
+  "烧烤",
+  "螺蛳粉",
+  "麻辣烫",
+  "麻辣香锅",
+  "煎饼果子",
+  "鸭血粉丝汤",
+  "煲仔饭",
+  "炒饭",
+  "炒面",
+  "炒河粉",
+  "酸辣粉",
+  "酸菜鱼",
+  "水煮鱼",
+  "红烧肉",
+  "鱼香肉丝",
+  "宫保鸡丁",
+  "麻婆豆腐",
+  "回锅肉",
+  "酸菜炖粉条",
+  "东坡肉",
+  "蚂蚁上树",
+  "麻辣香锅",
+  "麻辣小龙虾",
+  "小笼包",
+  "生煎包",
+  "灌汤包",
+  "豆浆油条",
+  "烧卖",
+  "蒸饺",
+  "水饺",
+  "锅贴",
+  "春卷",
+  "煎饺",
+  "炸春卷",
+  "蛋炒饭",
+  "鸡蛋灌饼",
+  "煎蛋",
+  "荷包蛋",
+  "蛋包饭",
+  "牛奶布丁",
+  "巧克力蛋糕",
+  "提拉米苏",
+  "芒果冰淇淋",
+  "草莓奶昔",
+  "抹茶冰淇淋",
+  "香草奶油蛋糕",
+  "榴莲糕点",
+  "蓝莓酥皮派",
+  "苹果派",
+  "椰子糕",
+  "红豆糕",
+  "芝士蛋糕",
+  "水果沙拉",
+  "凉拌黄瓜",
+  "拍黄瓜",
+  "凉拌莴苣",
+  "凉拌海带丝",
+  "凉拌豆腐",
+  "凉拌木耳",
+  "番茄鸡蛋汤",
+  "紫菜蛋花汤",
+  "酸辣汤",
+  "冬瓜排骨汤",
+  "西红柿牛腩汤",
+  "鸡蛋羹",
+  "玉米汤",
+  "蔬菜汤",
+  "海鲜汤",
+  "酸菜汤",
+  "绿豆汤",
+  "银耳汤",
+  "糖水",
+  "红豆汤",
+  "龙眼糖水",
+  "杏仁豆腐",
+  "西米露",
+  "芒果布丁",
+  "绿豆沙",
+  "黑糖糍粑",
+  "糯米糍",
+  "糖葫芦",
+  "麦片",
+  "牛奶",
+  "豆浆",
+  "果汁",
+  "咖啡",
+  "茶",
+  "可乐",
+  "雪碧",
+  "苏打水",
+  "椰子水",
+  "啤酒",
+  "红酒",
+  "白酒",
+  "伏特加",
+  "龙舌兰",
+  "威士忌",
+  "百利甜",
+  "马天尼",
+  "莫吉托",
+  "黑俄罗斯",
+  "苹果酒",
+  "荔枝酒",
+  "梅酒",
+  "柠檬汁",
+  "蜂蜜柚子茶",
+  "菊花茶",
+  "普洱茶",
+  "铁观音",
+  "绿茶",
+  "红茶",
+  "奶茶",
+  "玫瑰花茶",
+  "菊花普洱",
+  "柠檬红茶",
+  "冰淇淋奶茶",
+  "珍珠奶茶",
+  "台式奶茶",
+  "波霸奶茶",
+  "芋圆奶茶",
+  "奶绿",
+  "奶盖茶",
+  "鲜奶茶",
+  "水果茶",
+  "冰糖雪梨",
+  "柠檬水",
+  "蜂蜜柚子水",
+  "苹果汁",
+  "西瓜汁",
+  "芒果汁",
+  "葡萄汁",
+  "橙汁",
+  "蓝莓汁",
+  "菠萝汁",
+  "番茄汁",
+  "胡萝卜汁",
+  "青椒汁",
+  "苹果醋",
+  "蜂蜜柚子醋",
+  "柠檬醋",
+  "苹果醋",
+  "葡萄醋",
+  "香蕉醋",
+  "梅子醋",
+  "番茄醋",
+  "橙子醋",
+  "蓝莓醋"];
+  var randomIndex = Math.floor(Math.random() * myList.length);
+  var randomValue = myList[randomIndex];
+  var strrandom = randomValue.toString();
+  document.getElementById('food').innerHTML = strrandom;
+
+  setTimeout(generateRandomList, 100);
+}
+
+document.addEventListener("click", function() {
+  if (continueRandom) {
+    continueRandom = false;
+  } else if (continueLoop) {
+    continueLoop = false;
+  }
+});
+document.addEventListener("keydown", function(event) {
+  event.preventDefault()
+  if (continueRandom) {
+    continueRandom = false;
+  } else if (continueLoop) {
+    continueLoop = false;
+  }
+});
+
+
+
+generateRandomNumber();
+generateRandomList();
+
+
+</script>
+</html>
